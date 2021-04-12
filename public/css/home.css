@@ -1,0 +1,50 @@
+html,.content{
+  height: 100%;
+  width: 100%;
+}
+
+.picture{
+  margin: auto;
+}
+
+.post-picture{
+}
+
+.title{
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.description{
+  font-size: 20px;
+}
+
+.comment ul{
+  list-style: none;
+  padding: 0;
+}
+
+.menu{
+  /* background: rgba(102, 91, 255,0.7); */
+}
+
+.stats-like-dislike{
+  margin-left: 10px;
+}
+
+.like-button-logo{
+  width: 30px;
+}
+
+.like-button.dislike{
+  transform: rotate(180deg);
+}
+
+.blue{
+  background: blue;
+}
+
+.red{
+  background: red;
+}
