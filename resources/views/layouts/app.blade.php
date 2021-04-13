@@ -20,6 +20,7 @@
             <a class="nav-link" href="{{route('post')}}">Ajouter un post</a>
             <a class="nav-link" href="{{route('account.myposts')}}">Mes posts</a>
             <a class="nav-link" href="{{route('account')}}">Mon compte</a>
+            <a class="nav-link" href="{{route('presentation')}}">Présentation</a>
           </div>
         </div>
       </div>

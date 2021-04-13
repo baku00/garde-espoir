@@ -17,9 +17,11 @@ Route::get('/login', [App\Http\Controllers\LoginController::class,'index'])->nam
 
 Route::post('/login', [App\Http\Controllers\LoginController::class,'connect'])->name('login');
 
-Route::middleware(['auth'])->group(function(){
+Route::get('/', [App\Http\Controllers\HomeController::class,'index'])->name('home');
+Route::get('/presentation', [App\Http\Controllers\HomeController::class,'presentation'])->name('presentation');
+Route::post('/presentation', [App\Http\Controllers\HomeController::class,'sendMail'])->name('presentation');
 
-  Route::get('/', [App\Http\Controllers\HomeController::class,'index'])->name('home');
+Route::middleware(['auth'])->group(function(){
 
   Route::group(['prefix'=>'account','as'=>'account'],function(){
 

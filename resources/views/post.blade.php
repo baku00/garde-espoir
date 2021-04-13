@@ -22,8 +22,14 @@
       <input type="file" id="picture" class="form-control" name="picture" value="{{old('picture')}}" placeholder="Picture" required>
       <input type="text" id="title" class="form-control" name="title" value="{{old('title')}}" placeholder="Title (20 caractères max)" maxlength="20" required>
       <input type="text" id="description" class="form-control" name="description" value="{{old('description')}}" placeholder="Description (255 caractères max)" maxlength="255" required>
-      <button type="button" name="button" class="btn btn-primary" onclick="create()">Ajouter</button>
+
+      @if(Auth::user())
+        <button type="button" name="button" class="btn btn-primary" onclick="create()">Ajouter</button>
+      @else
+        <button type="button" name="button" class="btn btn-primary" onclick="create()" data-bs-toggle="modal" data-bs-target="#modal-post-without-account">Ajouter</button>
+      @endif
     </form>
+    @include('modals.post')
   </div>
 @endsection
 
