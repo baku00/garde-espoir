@@ -9,6 +9,7 @@ use Auth;
 
 class LoginController extends Controller
 {
+
   public function index(Request $req)
   {
     return view('login');
@@ -39,5 +40,11 @@ class LoginController extends Controller
     }
 
     return back();
+  }
+
+  public function logout(Request $req)
+  {
+    $req->session()->remove('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
+    return redirect()->route('home');
   }
 }

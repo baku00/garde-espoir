@@ -17,9 +17,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link" href="{{route('post')}}">Ajouter un post</a>
-            <a class="nav-link" href="{{route('account.myposts')}}">Mes posts</a>
-            <a class="nav-link" href="{{route('account')}}">Mon compte</a>
+            @if (Auth::user())
+              <a class="nav-link" href="{{route('post')}}">Ajouter un post</a>
+              <a class="nav-link" href="{{route('account.myposts')}}">Mes posts</a>
+              <a class="nav-link" href="{{route('account')}}">Mon compte</a>
+              <a class="nav-link" onclick="document.getElementById('logout').submit()" style="cursor:pointer;">Se déconnecter</a>
+              <form id="logout" action="{{route('logout')}}" method="post" style="display:none;">
+                @csrf
+              </form>
+            @else
+              <a class="nav-link" href="{{route('login')}}">Se connecter / S'inscrire</a>
+            @endif
             <a class="nav-link" href="{{route('presentation')}}">Présentation</a>
           </div>
         </div>

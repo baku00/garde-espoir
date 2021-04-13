@@ -1,11 +1,26 @@
 @extends('layouts.app')
 
 @section('style')
-  <link rel="stylesheet" href="{{asset('/css/home.css')}}">
+  <link rel="stylesheet" href="{{asset('/css/post.css')}}">
 @endsection
 
 @section('content')
   <div class="row">
+    <div id="0" class="post col-md-2 col-12">
+      <div class="post-info">
+        <div class="picture">
+          <img src="https://garde-espoir.com/storage/pictures/36df07763e57605aaeae17c8ecd6151f2140264aecb4ae86003222d3d12949fc.png" alt="(Le complexe)-image" class="post-picture col-md-12 col-12">
+        </div>
+      </div>
+      <div class="menu btn btn-primary">
+        <div class="title">
+          (Le complexe)
+        </div>
+        <div class="description" style="word-wrap: break-word;">
+          (Explication/Déscription/Raison du complexe)
+        </div>
+      </div>
+    </div>
     @foreach ($posts as $key => $value)
       <div id="{{$value->id}}" class="post col-md-2 col-12">
 

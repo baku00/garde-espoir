@@ -8,7 +8,6 @@
       </div>
       <div class="modal-body">
         Es-tu sûr de vouloir supprimer ce post ?
-        <h3><input type="text" id="remove-title" class="form-control-plaintext" name="" value="" readonly></h3>
         <form id="remove-form" action="{{route('account.myposts.remove')}}" method="post">
           @csrf
           <div class="form-group">

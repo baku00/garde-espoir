@@ -10,12 +10,12 @@ function create() {
     canSubmit = false;
   }
 
-  if(!title.value || title.value.length > 20){
+  if(!title.value){
     title.style.border = "1px solid red";
     canSubmit = false;
   }
 
-  if(!description.value || title.value.length > 255){
+  if(!description.value){
     description.style.border = "1px solid red";
     canSubmit = false;
   }

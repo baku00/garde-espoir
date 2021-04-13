@@ -18,12 +18,12 @@
             <input type="file" id="edit-picture" name="picture" class="form-control" value="">
           </div>
           <div class="form-group">
-            <label for="edit-title">Titre (Optionnel) (255 caractères max)</label>
-            <input type="text" id="edit-title" name="title" maxlength="255" class="form-control" value="">
+            <label for="edit-title">Titre (Optionnel) (20 caractères max)</label>
+            <input type="text" id="edit-title" name="title" maxlength="20" class="form-control" value="">
           </div>
           <div class="form-group">
-            <label for="edit-description">Description (Optionnel) (255 caractères max)</label>
-            <textarea name="description" id="edit-description" class="form-control" rows="4" cols="40" maxlength="255"></textarea>
+            <label for="edit-description">Description (Optionnel) (300 caractères max)</label>
+            <textarea name="description" id="edit-description" class="form-control" rows="4" cols="40" maxlength="300"></textarea>
           </div>
           <div class="form-group">
             <input type="hidden" id="post_id" name="post_id" value="">
@@ -31,7 +31,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" onclick="save()">Appliquer</button>
       </div>
     </div>

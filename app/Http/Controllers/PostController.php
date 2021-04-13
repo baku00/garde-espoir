@@ -21,7 +21,7 @@ class PostController extends Controller
       $req->validate([
         'picture'=>'required',
         'title'=>'required|string|max:20',
-        'description'=>'required|string|max:255',
+        'description'=>'required|string|max:300',
       ]);
 
       $file['file'] = $req->file('picture');

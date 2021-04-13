@@ -24,7 +24,7 @@ class MyPostsController extends Controller
         'title'=>'max:255',
         'description'=>'max:255',
       ]);
-
+      
       $picture = $req->file('picture');
       $picture_input = $req->input('picture_input');
       $post_id = $req->input('post_id');
@@ -56,8 +56,6 @@ class MyPostsController extends Controller
         Like::where(['post_id'=>$post_id])->delete();
         PostsLiked::where(['post_id'=>$post_id])->delete();
         Comment::where(['post_id'=>$post_id])->delete();
-        $picture = $post->get()->first()->picture_url;
-        Storage::disk('public')->delete(str_replace('/storage','',$picture));
         $post->delete();
       }
 

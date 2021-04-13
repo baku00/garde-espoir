@@ -16,9 +16,6 @@ function save() {
 
 function remove(post_id) {
   var picture = document.getElementById(post_id+'-picture').src
-  var title = document.getElementById(post_id+'-title').textContent
-  
-  document.getElementById('remove-title').value = title
   document.getElementById('remove-picture').src = picture
   document.getElementById('remove-post_id').value = post_id
 }

@@ -13,58 +13,49 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [App\Http\Controllers\HomeController::class,'index'])->name('home');
+
 Route::get('/login', [App\Http\Controllers\LoginController::class,'index'])->name('login');
 
 Route::post('/login', [App\Http\Controllers\LoginController::class,'connect'])->name('login');
 
-Route::get('/', [App\Http\Controllers\HomeController::class,'index'])->name('home');
-Route::get('/presentation', [App\Http\Controllers\HomeController::class,'presentation'])->name('presentation');
-Route::post('/presentation', [App\Http\Controllers\HomeController::class,'sendMail'])->name('presentation');
+Route::post('/logout', [App\Http\Controllers\LoginController::class,'logout'])->name('logout');
 
-Route::middleware(['auth'])->group(function(){
+Route::middleware('auth')->group(function(){
 
   Route::group(['prefix'=>'account','as'=>'account'],function(){
 
     Route::get('/', ['uses'=>'App\Http\Controllers\AccountController@index']);
 
-    Route::get('/information_login',['as'=>'.information_login','uses'=>'App\Http\Controllers\Account\InformationLoginController@index']);
+    Route::get('/login-informations', ['as'=>'.login-informations', 'uses'=>'App\Http\Controllers\Account\LoginInformationsController@index']);
 
     Route::group(['prefix'=>'myposts','as'=>'.myposts'],function(){
+      Route::get('/', ['uses'=>'App\Http\Controllers\Account\MyPostsController@index']);
 
-      Route::get('/',['uses'=>'App\Http\Controllers\Account\MyPostsController@index']);
-
-      Route::post('/',['as'=>'.save','uses'=>'App\Http\Controllers\Account\MyPostsController@save']);
-
-      Route::post('/remove',['as'=>'.remove','uses'=>'App\Http\Controllers\Account\MyPostsController@remove']);
-
+      Route::post('/', ['uses'=>'App\Http\Controllers\Account\MyPostsController@save']);
     });
 
     Route::group(['prefix'=>'update','as'=>'.update'],function(){
 
-      Route::group(['prefix'=>'information_login','as'=>'.information_login'],function(){
+      Route::post('email',['as'=>'.email','uses'=>'App\Http\Controllers\Account\LoginInformationsController@email']);
 
-        Route::post('/email',['as'=>'.email','uses'=>'App\Http\Controllers\Account\InformationLoginController@email']);
+      Route::post('password',['as'=>'.password','uses'=>'App\Http\Controllers\Account\LoginInformationsController@password']);
 
-        Route::post('/password',['as'=>'.password','uses'=>'App\Http\Controllers\Account\InformationLoginController@password']);
-
-      });
     });
 
   });
-
-  Route::group(['prefix'=>'post','as'=>'post'],function(){
-
-    Route::get('/',[App\Http\Controllers\PostController::class,'index']);
-
-    Route::post('/',[App\Http\Controllers\PostController::class,'post']);
-
-  });
-
-
-  Route::post('/like/{post_id}',[App\Http\Controllers\LikeController::class,'like'])->name('like');
-
-  Route::post('/dislike/{post_id}',[App\Http\Controllers\LikeController::class,'dislike'])->name('dislike');
-
-  Route::post('/comment/{post_id}',[App\Http\Controllers\CommentController::class,'comment'])->name('comment');
-
 });
+Route::get('/présentation', [App\Http\Controllers\HomeController::class,'presentation'])->name('presentation');
+Route::post('/présentation', [App\Http\Controllers\HomeController::class,'sendMail'])->name('presentation');
+
+Route::post('/account/myposts/remove', [App\Http\Controllers\Account\MyPostsController::class,'remove'])->name('account.myposts.remove')->middleware('auth');
+
+Route::get('/post',[App\Http\Controllers\PostController::class,'index'])->name('post')->middleware('auth');
+
+Route::post('/post',[App\Http\Controllers\PostController::class,'post'])->name('post')->middleware('auth');
+
+Route::post('/like/{post_id}',[App\Http\Controllers\LikeController::class,'like'])->name('like')->middleware('auth');
+
+Route::post('/dislike/{post_id}',[App\Http\Controllers\LikeController::class,'dislike'])->name('dislike')->middleware('auth');
+
+Route::post('/comment/{post_id}',[App\Http\Controllers\CommentController::class,'comment'])->name('comment')->middleware('auth');
