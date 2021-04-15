@@ -7,7 +7,7 @@
 @section('content')
   <div class="content" style="width:95%; margin:auto;">
     <div id="presentation">
-      <h3>Principe du site</h3>
+      <h3>Principes du site</h3>
       <p id="principe">Le principe est simple, quand vous arrivez sur le site, vous verrez les publications des autres utilisateurs.</p>
 
       <h3>Contenu d'une publication</h3>
